@@ -1,0 +1,24 @@
+<h1>DBZ Main page</h1>
+<hr>
+<div class="row">
+  <div class="col">
+
+    <!-- en el componente dbz-list definimos un decorador del tipo "@Input()" -->
+    <!-- el decorador nos permite poblar la lista "[characterList]" con un arreglo de datos que nosotros manejamos en otro componente-->
+    <!-- funciona similar a pasar props de padre a hijo -->
+    <dbz-list
+      [characterList]="characters"
+      (onDelete)="onDeleteCharacter($event)"
+    ></dbz-list>
+
+  </div>
+
+  <div class="col">
+
+    <!-- (onNewCharacter)="onNewCharacter($event) permite escuchar un evento realizado en otro componente -->
+     <!-- $event pasa los argumentos como parametro hacia el método que escucha el evento-->
+    <dbz-add-character (onNewCharacter)="onNewCharacter($event)"></dbz-add-character>
+
+  </div>
+
+</div>

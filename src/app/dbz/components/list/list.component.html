@@ -1,0 +1,31 @@
+<h4>Listado</h4>
+    <ol class="list-group">
+
+      <!-- se puede "expandir el ngFor" agregando la sintaxis ";let i = index" la cual nos permitirá acceder al índice del listado a iterar-->
+      <li
+        *ngFor="
+          let character of characterList;
+          let i = index;
+          let isFirst = first;
+          let isLast = last;
+          let isEven = even;
+          let isOdd = odd;
+
+        "
+
+        class="list-group-item d-flex justify-content-between align-items-center"
+        [ngClass]="{
+          'list-group-item-dark': isLast,
+          'list-group-item-primary': isEven
+        }" >
+        <div>
+          <span class="text-primary">{{i+1}}.</span>
+          <span>{{character.name}} - </span>
+          <strong>Power: </strong>
+          <span>{{character.power}}</span>
+        </div>
+
+        <button class="btn btn-danger" (click)="onDeleteCharacter(character.id)">X</button>
+      </li>
+
+    </ol>
